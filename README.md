@@ -18,9 +18,9 @@ Using a real-world Fitbit dataset (33 users, ~30 days) paired with CDC/NHANES na
 **Tools:** DuckDB · SQL · Python · Tableau Public
 
 **Key findings:**
-- Users who hit daily step goals still sit 11–21 hours per day — steps and sedentary time are independent metrics
+- Users who hit daily step goals still sit 11–21 hours per day. Steps and sedentary time are independent metrics
 - Sleep efficiency (% of time in bed actually asleep) varies from 64% to 98.5% across users and is more actionable than sleep duration alone
-- 6 of 33 users show step variability above 100% CV — consistency predicts outcomes better than peak activity days
+- 6 of 33 users show step variability above 100% CV. Consistency predicts outcomes better than peak activity days
 
 [View Analysis Code](project-1-wearables/Analysis/scripts/) · [View Live Dashboard](https://public.tableau.com/app/profile/olivia.watson4893/viz/WearableHealthAnalytics_OliviaWatson/WeeklyHealthRecap)
 
