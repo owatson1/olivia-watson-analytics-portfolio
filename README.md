@@ -13,7 +13,7 @@ Analytics and insights professional with 7+ years of experience translating ambi
 
 Most wearable apps tell you how many steps you took. This project asks a harder question: what does your data actually reveal about your health behaviors, and what should your app be telling you that it isn't?
 
-Using a real-world Fitbit dataset (33 users, ~30 days) paired with CDC/NHANES national benchmarks, this analysis identifies three behavioral patterns that step counts alone don't capture.
+Using a real-world [Fitbit dataset](https://www.kaggle.com/datasets/arashnic/fitbit) (33 users, ~30 days) paired with [CDC/NHANES national benchmarks](https://wwwn.cdc.gov/nchs/nhanes/search/datapage.aspx?Component=Demographics&Cycle=2021-2023), this analysis identifies three behavioral patterns that step counts alone don't capture.
 
 **Tools:** DuckDB · SQL · Python · Tableau Public
 
@@ -67,6 +67,10 @@ Using a real-world Fitbit dataset (33 users, ~30 days) paired with CDC/NHANES na
 - **Test whether consistency predicts other outcomes.** The consistency finding is descriptive right now. The more interesting question: do consistent users show better sleep efficiency, lower sedentary time, or higher active minutes? A correlation analysis across these metrics would turn this into a predictive insight.
 
 - **Add sleep and wake time distribution.** With sleep timestamp data (not just duration), visualizing when users go to bed and wake up would add a meaningful layer. Combined with the hourly activity chart, it would tell a richer story about behavioral clustering and where a wearable app's nudge timing should actually land.
+
+- **Data Sources:**
+- [Fitbit Fitness Tracker Data](https://www.kaggle.com/datasets/arashnic/fitbit) — Kaggle, 33 users, April-May 2016
+- [CDC NHANES 2021-2023 Demographics](https://wwwn.cdc.gov/nchs/nhanes/search/datapage.aspx?Component=Demographics&Cycle=2021-2023) — National health survey, 11,933 adults
 
 ---
 
