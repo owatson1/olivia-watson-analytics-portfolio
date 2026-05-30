@@ -1,4 +1,4 @@
-# Olivia Watson — Data Analytics Portfolio
+# Olivia Watson: Data Analytics Portfolio
 
 Analytics and insights professional with 7+ years of experience translating ambiguous business problems into the right questions, building measurement frameworks, and telling the data story clearly.
 
