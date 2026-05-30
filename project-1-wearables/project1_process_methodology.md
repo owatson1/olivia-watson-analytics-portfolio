@@ -6,19 +6,19 @@
 
 ## What This Document Is
 
-A plain-English walkthrough of every analytical and technical decision made in this project — what I did, why I did it, and what I would say about it in an interview. Written in first person because this is my work and my thinking.
+A plain-English walkthrough of key analytical and technical decisions made in this project, what I did, and why I did it.
 
 ---
 
 ## The Starting Point: What Question Am I Actually Answering?
 
-Most wearable analytics projects end at description: here are average steps, here is average sleep. That's not analysis — that's a summary. I wanted to ask a harder question.
+Most wearable analytics projects end at description: here are average steps, here is average sleep. That's not analysis, that's a summary. I wanted to ask a harder question.
 
 The business question I set out to answer:
 
-> *What behavioral patterns in wearable user data suggest opportunities for personalized health interventions — and what insights would be most actionable for users to see in their app?*
+> *What behavioral patterns in wearable user data suggest opportunities for personalized health interventions, and what insights would be most actionable for users to see in their app?*
 
-The framing matters. I'm not analyzing data for its own sake. I'm thinking like a product analytics team at a health tech company — Oura, Whoop, Fitbit/Google — who needs to decide what to surface in a weekly recap to actually change user behavior. Every analytical choice flows from that framing.
+The framing matters. I'm not analyzing data for its own sake. The thought is to think about a potential product analytics team at a health tech company who needs to decide what to surface in a weekly recap to actually change user behavior. My choices flow from that framing.
 
 ---
 
@@ -35,17 +35,17 @@ The framing matters. I'm not analyzing data for its own sake. I'm thinking like 
   - `hourlyIntensities_merged.csv` — intensity per hour per user (22,099 rows)
 
 **Why these four files and not the others?**
-The dataset contains ~18 files including minute-level granularity, heart rate, and weight logs. I chose daily and hourly files because they match the weekly recap framing — a weekly summary doesn't need minute-level data, and heart rate and weight had too many missing users to be analytically useful.
+The dataset contains ~18 files including minute-level granularity, heart rate, and weight logs. I chose daily and hourly files because they match the weekly recap framing, a weekly summary doesn't need minute-level data, and heart rate and weight had too many missing users to be analytically useful.
 
-**Known limitation:** No demographic data. Age, gender, and location are not available for the 33 Fitbit users. I treat this cohort as a proxy for the engaged wearable-wearing population — self-selected and likely already healthier than average.
+**Known limitation:** No demographic data. Age, gender, and location are not available for the 33 Fitbit users. I treat this cohort as a proxy for the engaged wearable-wearing population which is self-selected and likely already healthier than average.
 
 ### Benchmark: CDC / NHANES Demographics (2021–2023)
 - **Source:** CDC NHANES public data portal (no approval required)
-- **File:** `DEMO_L.xpt` — converted to CSV using Python
+- **File:** `DEMO_L.xpt` (converted to CSV using Python)
 - **Adults in dataset:** 8,153 (filtered to age 18+)
 
 **How NHANES is used — and how it isn't:**
-NHANES is not joined to the Fitbit data. There is no shared identifier between the two datasets, and attempting a statistical join would be methodologically incorrect. Instead, I use NHANES as a published national reference population — the same way CDC summary statistics are cited in academic and industry research. The NHANES dataset validates that my benchmark figures come from the actual 2021-2023 survey, not a secondary source.
+NHANES is not joined to the Fitbit data. There is no shared identifier between the two datasets, and attempting a statistical join would be methodologically incorrect. Instead, I use NHANES as a published national reference population the same way CDC summary statistics are cited in academic and industry research. The NHANES dataset validates that my benchmark figures come from the actual 2021-2023 survey, not a secondary source.
 
 The four CDC benchmarks used as reference points in the dashboard:
 - 24.2% of adults meet the 150 min/week physical activity guideline
@@ -75,13 +75,13 @@ DuckDB reads CSV files directly without an import step, which keeps the workflow
 
 **The finding:** Users who average 16,000 steps per day still sit for 18+ hours. Steps and sedentary time are not inversely correlated.
 
-**Why this is analytically interesting:** Most people — and most wearable apps — treat step count as the primary proxy for health. This analysis shows that a user can "win" on steps and still spend the majority of their day sedentary. The two metrics are independent, which means step count alone is insufficient as a health signal.
+**Why this is analytically interesting:** Most people (and most wearable apps) treat step count as the primary proxy for health. This analysis shows that a user can "win" on steps and still spend the majority of their day sedentary. The two metrics are independent, which means step count alone is insufficient as a health signal.
 
-**How I measured it:** Aggregated `SedentaryMinutes` from the daily activity file to a per-user average, converted to hours. Plotted against average daily steps in a scatter chart. The lack of negative correlation is the finding — if steps and sedentary time were inversely related, the scatter would show a clear downward slope. It doesn't.
+**How I measured it:** Aggregated `SedentaryMinutes` from the daily activity file to a per-user average, converted to hours. Plotted against average daily steps in a scatter chart. The lack of negative correlation is the finding. If steps and sedentary time were inversely related, the scatter would show a clear downward slope. It doesn't.
 
-**CDC connection:** The 6.5 hours national sedentary average becomes the benchmark line on the chart. The Fitbit cohort averages significantly higher — 11–22 hours sedentary per day depending on the user — which is striking even accounting for sleep being counted as sedentary in this dataset.
+**CDC connection:** The 6.5 hours national sedentary average becomes the benchmark line on the chart. The Fitbit cohort averages significantly higher — 11–22 hours sedentary per day depending on the user, which is striking even accounting for sleep being counted as sedentary in this dataset.
 
-**Interview talking point:** "I noticed that the most active users by step count were also among the most sedentary by sitting time. That's counterintuitive, and it's exactly the kind of insight a product team would want to surface — because it changes what the app should tell users."
+**Interview talking point:** "I noticed that the most active users by step count were also among the most sedentary by sitting time. That's counterintuitive, and it's exactly the kind of insight a product team would want to surface because it changes what the app should tell users."
 
 ---
 
@@ -90,7 +90,7 @@ DuckDB reads CSV files directly without an import step, which keeps the workflow
 **The finding:** Sleep efficiency (minutes asleep ÷ minutes in bed) ranges from 64% to 98.5% across users. It varies more than total sleep time and is more actionable.
 
 **Why this metric and not just sleep duration?**
-Total sleep time tells you how long someone slept. Sleep efficiency tells you how well they slept — specifically, whether time in bed is being used for actual sleep. A user who spends 8 hours in bed but only sleeps 6.5 has a different problem than a user who spends exactly 6.5 hours in bed and sleeps all of it. The intervention — and therefore the app message — should be different for each.
+Total sleep time tells you how long someone slept. Sleep efficiency tells you how well they slept — specifically, whether time in bed is being used for actual sleep. A user who spends 8 hours in bed but only sleeps 6.5 has a different problem than a user who spends exactly 6.5 hours in bed and sleeps all of it. The intervention, and therefore the app message, should be different for each.
 
 **How I measured it:**
 ```sql
@@ -106,7 +106,7 @@ Averaged at the user level across all recorded sleep days. Clinical threshold fo
 
 ### Insight 3: Consistency Over Intensity
 
-**The finding:** 6 of 33 users have a step coefficient of variation above 100%, meaning their daily steps vary more than their average — high peaks offset by near-zero days.
+**The finding:** 6 of 33 users have a step coefficient of variation above 100%, meaning their daily steps vary more than their average (high peaks offset by near-zero days).
 
 **The metric — coefficient of variation (CV):**
 CV = (standard deviation / mean) × 100
@@ -135,7 +135,7 @@ These thresholds are my analytical judgment call, not published standards. I'd d
 
 **Heart rate:** The dataset includes heart rate data, but fewer than 15 users have meaningful records. With complete heart rate data, I could calculate actual exercise intensity rather than relying on the device's intensity classification.
 
-**Statistical testing:** The patterns I identify are descriptive. To make causal claims — "inconsistent users are less healthy" — I'd need to run significance tests and control for confounders. That's outside scope for this dataset but worth noting.
+**Statistical testing:** The patterns I identify are descriptive. To make causal claims such as "inconsistent users are less healthy", I'd need to run significance tests and control for confounders. That's outside the scope for this dataset, but still worth noting.
 
 ---
 
@@ -168,16 +168,16 @@ Project 1/
 
 ---
 
-## Interview Quick Reference
+## FAQs
 
-**"Walk me through this project."**
-I started with a product question — what should a wearable app's weekly recap actually tell users — and worked backward to the data. I used a public Fitbit dataset of 33 users and paired it with NHANES national benchmarks to add population-level context. The three core findings are the activity-sedentary paradox, sleep efficiency variation, and step consistency. Each maps to a feature a health tech company could build.
+**"What is this project about?"**
+I started with a product question, what should a wearable app's weekly recap actually tell users, and worked backward to the data. I used a public Fitbit dataset of 33 users and paired it with NHANES national benchmarks to add population-level context. The three core findings are the activity-sedentary paradox, sleep efficiency variation, and step consistency. Each maps to a feature a health tech company could build.
 
 **"Why DuckDB?"**
-It reads CSVs directly without a database setup, handles analytical SQL cleanly, and is increasingly common in analytics roles. The SQL syntax is standard — nothing in this project is DuckDB-specific.
+It reads CSVs directly without a database setup, handles analytical SQL cleanly, and is increasingly common in analytics roles. The SQL syntax is standard. Nothing in this project is DuckDB-specific.
 
 **"Why NHANES?"**
-To add context. Without a national benchmark, the Fitbit data just describes 33 people. With it, I can say: this cohort is already more active than 70% of American adults, which makes the gaps I found more interesting, not less — even people who self-select into wearables have room to improve on sedentary time and sleep.
+To add context. Without a national benchmark, the Fitbit data just describes 33 people. With it, I can say: this cohort is already more active than 70% of American adults, which makes the gaps I found more interesting, not less. Even people who self-select into wearables have room to improve on sedentary time and sleep.
 
 **"What would you do differently?"**
 Demographics in the Fitbit data would unlock segmentation by age and gender. Longitudinal data would let me measure actual behavior change. And with heart rate data I could validate the intensity classifications the device uses rather than taking them at face value.
