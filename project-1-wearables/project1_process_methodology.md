@@ -4,7 +4,7 @@
 
 ---
 
-## What This Document Is
+## What's In This Document?
 
 A plain-English walkthrough of key analytical and technical decisions made in this project, what I did, and why I did it.
 
@@ -22,7 +22,7 @@ The framing matters. I'm not analyzing data for its own sake. The thought is to 
 
 ---
 
-## The Data
+## The Fun Part: The Data
 
 ### Primary: Fitbit Fitness Tracker Data
 - **Source:** Kaggle (publicly available, arashnic/fitbit)
@@ -69,7 +69,7 @@ DuckDB reads CSV files directly without an import step, which keeps the workflow
 
 ---
 
-## The Three Insights: Analytical Decisions
+## Three Key Insights: Analytical Decisions
 
 ### Insight 1: The Activity-Sedentary Paradox
 
