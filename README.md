@@ -2,7 +2,7 @@
 
 Analytics and insights professional with 7+ years of experience translating ambiguous business problems into the right questions, building measurement frameworks, and telling the data story clearly.
 
-**Core tools:** SQL · Tableau · Python · DuckDB · Alteryx · Power BI · Excel (Power Query, VBA)
+**Core tools:** SQL, Tableau, Python, DuckDB, Alteryx, Power BI, Excel (Power Query, VBA)
 
 ---
 
@@ -15,7 +15,7 @@ Most wearable apps tell you how many steps you took. This project asks a harder 
 
 Using a real-world [Fitbit dataset](https://www.kaggle.com/datasets/arashnic/fitbit) (33 users, ~30 days) paired with [CDC/NHANES national benchmarks](https://wwwn.cdc.gov/nchs/nhanes/search/datapage.aspx?Component=Demographics&Cycle=2021-2023), this analysis identifies three behavioral patterns that step counts alone don't capture.
 
-**Tools:** DuckDB · SQL · Python · Tableau Public
+**Tools:** DuckDB, SQL, Python, Tableau Public
 
 **Key findings:**
 - Users who hit daily step goals still sit 11-21 hours per day. Steps and sedentary time are independent metrics.
@@ -69,8 +69,8 @@ Using a real-world [Fitbit dataset](https://www.kaggle.com/datasets/arashnic/fit
 - **Add sleep and wake time distribution.** With sleep timestamp data (not just duration), visualizing when users go to bed and wake up would add a meaningful layer. Combined with the hourly activity chart, it would tell a richer story about behavioral clustering and where a wearable app's nudge timing should actually land.
 
 - **Data Sources:**
-- [Fitbit Fitness Tracker Data](https://www.kaggle.com/datasets/arashnic/fitbit) — Kaggle, 33 users, April-May 2016
-- [CDC NHANES 2021-2023 Demographics](https://wwwn.cdc.gov/nchs/nhanes/search/datapage.aspx?Component=Demographics&Cycle=2021-2023) — National health survey, 11,933 adults
+- [Fitbit Fitness Tracker Data](https://www.kaggle.com/datasets/arashnic/fitbit): Kaggle, 33 users, April-May 2016
+- [CDC NHANES 2021-2023 Demographics](https://wwwn.cdc.gov/nchs/nhanes/search/datapage.aspx?Component=Demographics&Cycle=2021-2023): National health survey, 11,933 adults
 
 ---
 
