@@ -1,0 +1,5 @@
+metric,nhanes_national_value,unit,source
+pct_meeting_activity_guideline,24.2,% of adults meeting 150 min/week,CDC NHANES 2020
+pct_insufficient_sleep,32.8,% of adults sleeping < 7 hours,CDC Sleep Surveillance 2022
+avg_sedentary_hours_per_day,6.5,hours/day,CDC NHANES accelerometer data
+avg_daily_steps_national,4774.0,steps/day,"NHANES accelerometer, Tudor-Locke et al."

@@ -1,0 +1,25 @@
+user_id,sleep_days_recorded,avg_minutes_asleep,avg_minutes_in_bed,avg_hours_asleep,avg_hours_in_bed,avg_sleep_efficiency_pct,cdc_sleep_status
+8053475328,3,297.0,302.0,5.0,5.0,98.5,Below 7hr guideline
+7086361926,24,453.0,466.0,7.6,7.8,97.2,Meets 7hr guideline
+6962181067,31,448.0,466.0,7.5,7.8,96.1,Meets 7hr guideline
+8792009665,15,436.0,454.0,7.3,7.6,96.0,Meets 7hr guideline
+7007744171,2,69.0,72.0,1.1,1.2,95.8,Below 7hr guideline
+4702921684,28,421.0,442.0,7.0,7.4,95.3,Meets 7hr guideline
+1927972279,5,417.0,438.0,7.0,7.3,95.2,Below 7hr guideline
+4319703577,26,477.0,502.0,7.9,8.4,95.0,Meets 7hr guideline
+6775888955,3,350.0,369.0,5.8,6.2,94.8,Below 7hr guideline
+4388161847,24,403.0,426.0,6.7,7.1,94.6,Below 7hr guideline
+2026352035,28,506.0,538.0,8.4,9.0,94.1,Meets 7hr guideline
+1503960366,25,360.0,383.0,6.0,6.4,94.0,Below 7hr guideline
+5577150313,26,432.0,461.0,7.2,7.7,93.8,Meets 7hr guideline
+6117666160,18,479.0,510.0,8.0,8.5,93.8,Meets 7hr guideline
+4445114986,28,385.0,417.0,6.4,6.9,92.4,Below 7hr guideline
+4020332650,8,349.0,380.0,5.8,6.3,92.0,Below 7hr guideline
+8378563200,32,443.0,483.0,7.4,8.1,91.7,Meets 7hr guideline
+5553957443,31,463.0,506.0,7.7,8.4,91.6,Meets 7hr guideline
+4558609924,5,128.0,140.0,2.1,2.3,91.1,Below 7hr guideline
+2347167796,15,447.0,491.0,7.4,8.2,90.9,Meets 7hr guideline
+2320127002,1,61.0,69.0,1.0,1.2,88.4,Below 7hr guideline
+1644430081,4,294.0,346.0,4.9,5.8,85.0,Below 7hr guideline
+1844505072,3,652.0,961.0,10.9,16.0,67.8,Meets 7hr guideline
+3977333714,28,294.0,461.0,4.9,7.7,63.7,Below 7hr guideline
