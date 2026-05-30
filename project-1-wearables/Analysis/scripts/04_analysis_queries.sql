@@ -3,7 +3,7 @@
 -- "What Your Weekly Recap Is Missing"
 -- Olivia Watson | Data Analytics Portfolio
 --
--- Tool: DuckDB (reads CSVs directly — no import step needed)
+-- Tool: DuckDB (used because it reads CSVs directly aka no import step needed)
 -- Data sources:
 --   fitbit_daily_activity.csv  — 940 rows, 33 users, ~30 days
 --   fitbit_sleep.csv           — 413 rows, 24 users with sleep data
@@ -34,7 +34,7 @@
 --   minutes. Flags whether each user meets the CDC guideline
 --   of 150 minutes of moderate activity per week.
 --
--- Key finding (Insight 1 — The Activity-Sedentary Paradox):
+-- Key finding (Insight 1: The Activity-Sedentary Paradox):
 --   Users who hit daily step goals still accumulate 11–21
 --   hours of sedentary time per day. Steps and sedentary
 --   time are not inversely correlated the way most people
@@ -81,12 +81,12 @@ ORDER BY avg_daily_steps DESC;
 -- QUERY 2: Sleep Efficiency
 -- ============================================================
 -- What it does:
---   Calculates average sleep efficiency per user — the ratio
+--   Calculates average sleep efficiency per user, aka the ratio
 --   of time actually asleep to total time spent in bed.
 --   This is a more actionable metric than raw sleep duration
 --   because it captures sleep quality, not just quantity.
 --
--- Key finding (Insight 2 — Sleep Efficiency):
+-- Key finding (Insight 2: Sleep Efficiency):
 --   Sleep efficiency ranges from 64% to 98.5% across users.
 --   Two users fall well below the clinical threshold of 85%,
 --   suggesting poor sleep quality despite adequate time in bed.
@@ -97,9 +97,9 @@ ORDER BY avg_daily_steps DESC;
 --
 -- Note on data quality:
 --   Only 24 of 33 users have sleep records. Several users
---   show very low average hours asleep (<2 hrs) — these are
+--   show very low average hours asleep (<2 hrs). FLAG: these are
 --   likely incomplete recording days, not actual sleep values.
---   In Tableau, filter to users with 5+ sleep days recorded.
+--   Will filter out in Tableau to users with 5+ sleep days recorded.
 -- ============================================================
 
 SELECT
@@ -119,7 +119,7 @@ SELECT
     ROUND(AVG(TotalMinutesAsleep) * 100.0 / AVG(TotalTimeInBed), 1)
                                                                     AS avg_sleep_efficiency_pct,
 
-    -- CDC guideline flag: adults need 7+ hours of sleep per night
+    -- CDC guideline flag: 7+ hours of sleep per night for adults
     CASE
         WHEN AVG(TotalMinutesAsleep) >= 420 THEN 'Meets 7hr guideline'
         ELSE 'Below 7hr guideline'
@@ -139,7 +139,7 @@ ORDER BY avg_sleep_efficiency_pct DESC;
 --   CV = standard deviation / mean, expressed as a percentage.
 --   Lower CV = more consistent day-to-day activity pattern.
 --
--- Key finding (Insight 3 — Consistency Over Intensity):
+-- Key finding (Insight 3: Consistency Over Intensity):
 --   6 of 33 users are classified as "Inconsistent" (CV > 100%),
 --   meaning their step counts vary wildly day to day — high
 --   peaks offset by very low days. A user with 7,000 steps
@@ -186,10 +186,10 @@ ORDER BY step_cv_pct ASC;
 -- What it does:
 --   Pulls summary statistics from the NHANES 2021-2023
 --   demographics file to characterize the national adult
---   population. Used as context to show that wearable users
---   are a self-selected, already-healthier population —
+--   population. Context to show that wearable users
+--   are a self-selected, already-healthier population, 
 --   which makes the gaps identified in Queries 1-3 more
---   meaningful, not less.
+--   meaningful.
 --
 -- NHANES column reference:
 --   RIDAGEYR  — Age in years
@@ -200,9 +200,9 @@ ORDER BY step_cv_pct ASC;
 -- Note on usage:
 --   NHANES is not joined to the Fitbit data. There is no
 --   shared key between the two datasets. NHANES is used
---   purely as a published national reference benchmark —
---   the same way CDC summary statistics are cited in
---   academic and industry research.
+--   purely as a published national reference benchmark
+--   same way CDC summary statistics are cited in
+--   academic / industry research.
 -- ============================================================
 
 SELECT
@@ -222,7 +222,7 @@ WHERE RIDAGEYR >= 18;  -- Adults only
 -- What it does:
 --   Aggregates hourly step data across all users to show
 --   when the cohort is most active during the day.
---   Reveals two distinct activity peaks: midday and evening.
+--   Reveals two distinct activity peaks: midday & evening.
 --   This pattern has implications for wearable app nudge
 --   timing — interventions are most effective just before
 --   a user's natural activity window.
@@ -230,7 +230,7 @@ WHERE RIDAGEYR >= 18;  -- Adults only
 -- Key finding:
 --   Peak activity hours are 12pm-2pm and 5pm-7pm.
 --   Activity drops sharply after 8pm and is minimal before 6am.
---   Evening peak (6pm, avg 599 steps) is highest of the day.
+--   Evening peak (6pm, avg 599 steps) is highest part of the day.
 -- ============================================================
 
 SELECT
