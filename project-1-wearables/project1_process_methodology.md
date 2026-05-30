@@ -1,4 +1,4 @@
-# Project 1: Wearable Health Analytics — Process & Methodology
+# Project 1: Wearable Health Analytics: Process & Methodology
 ### "What Your Weekly Recap Is Missing"
 **Olivia Watson | Data Analytics Portfolio**
 
