@@ -2,7 +2,7 @@
 
 **Senior Analytics Professional | Revenue Operations | Growth Analytics | Health Tech**
 
-[Tableau Public](https://public.tableau.com/app/profile/olivia.watson4893) · [LinkedIn](www.linkedin.com/in/olivia-watson)
+[Tableau Public](https://public.tableau.com/app/profile/olivia.watson4893) · [LinkedIn](http://www.linkedin.com/in/olivia-watson)
 
 ---
 
