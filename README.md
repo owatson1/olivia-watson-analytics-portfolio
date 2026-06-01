@@ -76,20 +76,72 @@ Using a real-world [Fitbit dataset](https://www.kaggle.com/datasets/arashnic/fit
 
 ### Project 2: Revenue & Growth Analytics
 
-"Where Is the Revenue and Where Should It Go?"
-A commercial performance and market opportunity analysis of 100K+ Brazilian e-commerce transactions. Built for a senior commercial or RevOps audience — the kind of analysis you'd bring to a leadership meeting, not just a reporting review.
-Page 1 covers core performance fundamentals. Page 2 layers in Brazilian state-level economic data to identify where e-commerce revenue is undertapped relative to regional wealth and population.
-Tools: DuckDB · SQL · Python · Tableau Public
-Key findings:
+### Project 2: Revenue & Growth Analytics
+**"Where Is the Revenue and Where Should It Go?"**
 
-GMV grew from ~$300K/month to ~$1M/month over 2017, with a clear holiday season spike in November
-Health & Beauty and Watches & Gifts lead revenue at $1.2M each — together 18% of total GMV
-91.9% national on-time delivery rate, but MA sits at 76.9% — a meaningful outlier
-Review scores are bimodal: 58% are 5-star, 11% are 1-star — delivery experience appears to be the dividing factor
+Most e-commerce dashboards show you total revenue over time and call it a day. This project asks something harder: what's driving performance, where is customer satisfaction breaking down, and which markets are being left on the table?
 
-View Live Dashboard · View Analysis Code
+Using 100K+ real transactions from Olist, Brazil's largest online marketplace, paired with [IBGE state-level economic data](https://ibge.gov.br) (Brazilian Institute of Geography and Statistics, 2017), this analysis moves from performance measurement to strategic opportunity sizing across two dashboard pages.
+
+**Tools:** DuckDB, SQL, Python, Tableau Public
+
+**Key findings:**
+- GMV grew from ~$300K/month in early 2017 to ~$1M/month by November 2017, driven by a clear holiday season spike
+- Health & Beauty and Watches & Gifts lead revenue at ~$1.2M each — together accounting for 18% of total GMV
+- 91.9% of orders are delivered on time nationally, but MA sits at 76.9% — a significant outlier that correlates with lower review scores
+- Review scores are bimodal: 58% are 5-star, 11% are 1-star. The middle is thin. Delivery experience appears to be the dividing factor.
+
+[View Live Dashboard](https://public.tableau.com/app/profile/olivia.watson4893/viz/OlistCommercialGrowthAnalytics_OliviaWatson/Dashboard1) · [View Analysis Code](project-2-revenue-growth/Analysis/scripts/)
 
 *Dashboard 2 of Project 2 coming soon*
+
+---
+
+### Assumptions
+
+- **Delivered orders only.** All revenue, satisfaction, and delivery metrics are filtered to orders with status = "delivered." Canceled, unavailable, and in-progress orders are excluded. This is the right scope for a commercial performance analysis — we're measuring what actually reached the customer.
+
+- **On-time delivery is defined by the platform's own estimate.** On-time means `order_delivered_customer_date <= order_estimated_delivery_date`. This measures whether Olist met its own promise to the customer, not whether the delivery was fast in absolute terms. A seller could have a 100% on-time rate and still take 3 weeks to deliver.
+
+- **Repeat purchase rate (3%) reflects the platform model, not a data problem.** Olist is a discovery marketplace — most buyers arrive via search for a specific product. Low repeat rates are a structural characteristic of this model, not a signal that something is wrong with the data or the business. It's the same reason Amazon marketplace sellers see low direct repeat rates.
+
+- **State economic data is from 2017.** IBGE publishes regional accounts annually. 2017 was chosen because it represents the peak transaction period in the dataset. Using 2016 or 2018 figures would not materially change the opportunity matrix findings.
+
+- **GMV per capita uses customer state, not seller state.** The regional opportunity analysis reflects where buyers are located, not where sellers ship from. This is intentional — the question being asked is about demand concentration, not fulfillment geography.
+
+---
+
+### Limitations
+
+- **2016 is a partial year.** The dataset starts in September 2016. Only 2017 is a complete calendar year and serves as the primary baseline. 2018 data ends in October. Year-over-year comparisons need to account for this — the trend line shows real growth but the endpoints are not clean annual boundaries.
+
+- **No customer demographics.** Age, gender, income, and device type are not available. Almost every finding here would be more actionable with basic demographics — particularly the regional opportunity analysis, where household income at the individual level would sharpen the market sizing significantly.
+
+- **Seller state ≠ origin of goods.** Seller state reflects where the seller is registered, not necessarily where the product ships from or is warehoused. The delivery performance analysis by seller state should be read as a signal, not a precise operations metric.
+
+- **The economic data merge is at the state level.** Brazil has 27 states. The opportunity matrix shows state-level patterns, not city or metro-level ones. São Paulo state, for example, contains both the hyper-dense capital city and rural areas — the state average masks a lot of internal variation.
+
+- **Cohort LTV is a revenue proxy, not true LTV.** True lifetime value requires a churn model and margin data. What's calculated here is cumulative revenue per customer by acquisition cohort — a useful directional signal, but not a complete LTV model.
+
+---
+
+### What I Would Do With Better Data
+
+- **Add margin data.** GMV tells you how much customers spent. Contribution margin tells you how much the business kept. A revenue analysis without margin data can't answer the most important commercial question: which categories, sellers, and regions are actually profitable?
+
+- **Build a proper churn and retention model.** With a subscription or loyalty signal, the repeat purchase analysis could move from a descriptive rate to a predictive model. Which customers are likely to buy again? What triggered the second purchase for the 3% who did?
+
+- **Drill the regional opportunity matrix to city level.** The state-level scatter plot identifies which states are underserved. City-level data — available in the Olist dataset through zip code — would let you identify specific metro areas to prioritize for seller recruitment or marketing investment.
+
+- **Segment seller performance beyond state.** The delivery analysis shows which states have fulfillment problems. The more actionable cut is by individual seller — identifying the specific sellers driving MA's 76.9% on-time rate and understanding whether it's a volume problem, a geography problem, or an operational one.
+
+- **Connect delivery performance to customer lifetime value.** The fulfillment vs. satisfaction scatter suggests that slower delivery drives lower review scores. The next question is whether lower review scores drive lower repurchase. Linking these three metrics — delivery speed, review score, repeat purchase — would turn a correlation into a causal chain worth acting on.
+
+- **Data Sources:**
+   - [Olist Brazilian E-Commerce Dataset](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce): Kaggle, 9 tables, 100K+ orders, 2016–2018
+   - [IBGE Regional Accounts of Brazil, 2017](https://ibge.gov.br): State-level GDP per capita and population, Brazilian Institute of Geography and Statistics
+
+---
 
 ### Project 3: Strategic Case Study
 *Coming soon*
