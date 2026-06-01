@@ -27,7 +27,7 @@ A market opportunity analysis that merges Olist transaction data with Brazilian 
 
 Planned analysis includes:
 - Regional opportunity matrix: GMV per capita vs. GDP per capita by state
-- Repeat purchase rate by state — retention proxy across the customer base
+- Repeat purchase rate by state: retention proxy across the customer base
 - Cohort LTV analysis: how much did each monthly acquisition cohort spend over time?
 - Fulfillment speed vs. review score correlation: does faster delivery actually drive satisfaction?
 
@@ -54,7 +54,7 @@ All analysis was written in SQL and Python. Queries use window functions, CTEs, 
 ---
 
 ## Live Dashboard _
-Note: Dashboard 1 is LIVE, Dashboard 2 coming soon :)_
+Note: Dashboard 1 is LIVE, Dashboard 2 coming soon :) 
 
 [View on Tableau Public](https://public.tableau.com/app/profile/olivia.watson4893/viz/OlistCommercialGrowthAnalytics_OliviaWatson/Dashboard1)
 
@@ -87,10 +87,10 @@ project-2-revenue-growth/
 
 ## Assumptions & Limitations
 
-- Analysis is filtered to **delivered orders only**. Canceled, unavailable, and in-progress orders are excluded from all revenue and satisfaction metrics
+- Analysis is filtered to **delivered orders only**. Canceled, unavailable, and in-progress orders are excluded from all revenue and satisfaction metrics. Future analysis could focus on further understanding trends around order cancellations, availability, time to fullfillment, and more
 - On-time delivery is defined as: `order_delivered_customer_date <= order_estimated_delivery_date`
 - The dataset ends in October 2018 and begins in September 2016. 2017 is the only complete calendar year and serves as the primary baseline
-- Repeat purchase rate (3%) reflects Olist's marketplace model, where most buyers arrive via search rather than direct loyalty — this is a characteristic of the platform, not a data quality issue
+- Repeat purchase rate (3%) reflects Olist's marketplace model, where most buyers arrive via search rather than direct loyalty. This is a characteristic of the platform, not a data quality issue. Further analysis could explore trends around repeat customers and loyalty
 - State economic data is from 2017 to align with the peak transaction period in the dataset
 
 ---
