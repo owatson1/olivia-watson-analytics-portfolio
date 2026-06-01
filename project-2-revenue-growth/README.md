@@ -124,4 +124,4 @@ project-2-revenue-growth/
 
 ---
 
-*Last updated: May 2026 | Tools: DuckDB, SQL, Python, Tableau Public*
+*Last updated: May 2026*
