@@ -93,7 +93,8 @@ Using 100K+ real transactions from Olist, Brazil's largest online marketplace, p
 
 [View Live Dashboard](https://public.tableau.com/app/profile/olivia.watson4893/viz/OlistCommercialGrowthAnalytics_OliviaWatson/Dashboard1) · [View Analysis Code](project-2-revenue-growth/Analysis/scripts/)
 
-*Dashboard 1 published. Dashboard 2 coming soon!*
+Dashboard 1 published. Dashboard 2 coming soon!
+
 ---
 
 ### Assumptions
