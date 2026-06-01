@@ -184,4 +184,4 @@ Demographics in the Fitbit data would unlock segmentation by age and gender. Lon
 
 ---
 
-*Last updated: May 2026 | Project 1 of 3*
+*Last updated: May 2026*
