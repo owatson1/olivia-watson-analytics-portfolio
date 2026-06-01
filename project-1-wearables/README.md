@@ -1,4 +1,4 @@
-### Project 1: Wearable Health Analytics
+# Project 1: Wearable Health Analytics
 **"What Your Weekly Recap Is Missing"**
 
 Most wearable apps tell you how many steps you took. This project asks a harder question: what does your data actually reveal about your health behaviors, and what should your app be telling you that it isn't?
