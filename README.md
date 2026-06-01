@@ -75,7 +75,21 @@ Using a real-world [Fitbit dataset](https://www.kaggle.com/datasets/arashnic/fit
 ---
 
 ### Project 2: Revenue & Growth Analytics
-*Coming soon*
+
+"Where Is the Revenue and Where Should It Go?"
+A commercial performance and market opportunity analysis of 100K+ Brazilian e-commerce transactions. Built for a senior commercial or RevOps audience — the kind of analysis you'd bring to a leadership meeting, not just a reporting review.
+Page 1 covers core performance fundamentals. Page 2 layers in Brazilian state-level economic data to identify where e-commerce revenue is undertapped relative to regional wealth and population.
+Tools: DuckDB · SQL · Python · Tableau Public
+Key findings:
+
+GMV grew from ~$300K/month to ~$1M/month over 2017, with a clear holiday season spike in November
+Health & Beauty and Watches & Gifts lead revenue at $1.2M each — together 18% of total GMV
+91.9% national on-time delivery rate, but MA sits at 76.9% — a meaningful outlier
+Review scores are bimodal: 58% are 5-star, 11% are 1-star — delivery experience appears to be the dividing factor
+
+View Live Dashboard · View Analysis Code
+
+*Dashboard 2 of Project 2 coming soon*
 
 ### Project 3: Strategic Case Study
 *Coming soon*
