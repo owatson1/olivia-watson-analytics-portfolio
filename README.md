@@ -8,7 +8,7 @@
 
 ## About Me
 
-I'm a senior analytics professional with 7+ years of experience turning ambiguous business problems into clear, actionable findings. My background spans federal healthcare programs, operations, and strategy, which means I've spent a lot of time asking hard questions of messy data and explaining the answers in a way that actually drives decisions, not just documents findings.
+I'm a senior analytics professional with 6+ years of experience turning ambiguous business problems into clear, actionable findings. My background spans federal healthcare programs, operations, and strategy, which means I've spent a lot of time asking hard questions of messy data and explaining the answers in a way that actually drives decisions, not just documents findings.
 
 My core value is the layer between the data and the decision: building the right measurement framework, asking the question nobody thought to ask, and making the findings readibly available to the people who need to act on them.
 
